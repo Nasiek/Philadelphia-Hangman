@@ -120,6 +120,7 @@ input[type=text]:focus {
     font-size: 25px;
     font-family: 'Lato sans-serif';
     color: #4476C8;
+    background-color: #566573;
     text-shadow: -1px 0 grey, 0 1px black, 1px 0 black, 0 -1px grey;
 }
 #buttonspace{

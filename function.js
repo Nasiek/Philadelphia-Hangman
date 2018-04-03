@@ -1,109 +1,79 @@
-//var neighborhoods = ["Bustleton, Bridesburg, Cedarbrook, Chestnut Hill, East Falls, East Mount Airy, Grays Ferry, Olney, Pennypack, Park Somerton,  West Mount Airy,  West Oak Lane, Wissahickon Park, Riverfront, Byberry, West Torresdale, Mechanicsville, Parkwood, Manor,Franklin Mills, Northeast Philadelphia, Airport,Modena,Morrell Park,Millbrook,Crestmont Farms,Academy Gardens,,Pennypack,Aston Woodbridge,Pennypack Woods,Winchester Park,Torresdale,Lexington Park,Rhawnhurst,Fox Chase,Burholme,Oxford Circle,Summerdale,Crescentville,Lawndale,Northwood,Holmesburg,Frankford,Mayfair,Tacony,Wissinoming,Andorra,Upper Roxborough,Dearnley Park,Roxborough Park,Germany Hill,Wissahickon Hills,Roxborough,Manayunk,Wissahickon,East Germantown,Germantown - Morton,West Central Germantown,Germantown - Penn Knox,Germantown - Westside,Southwest Germantown,Ogontz,Wister,Nicetown,Tioga,Allegheny West,Glenwood,Fern Rock,East Oak Lane,Melrose Park Gardens,Franklinville,Feltonville,Richmond,Port Richmond,Hunting Park,Juniata Park,Harrowgate,Fairhill,Upper Kensington,McGuire,Stanton,Brewerytown,Sharswood,North Central,Yorktown,Ludlow,Hartranft,West Kensington,Fishtown - Lower Kensington,Old Kensington,Northern Liberties,Logan,Society Hill,Old City,Chinatown,Center City East,Washington Square West,Fairmount,Francisville,Spring Garden,Logan Square,Rittenhouse,Fitler Square,Graduate Hospital,Point Breeze,Hawthorne,Bella Vista,Queen Village,Dickinson Narrows,Passyunk Square,Greenwich,Lower Moyamensing,Whitman,Industrial,Airport,Clearview,Penrose,Paschall,Bartram Village,Kingsessing,Cobbs Creek,Walnut Hill,Cedar Park,Garden Court,Woodland Terrace,Spruce Hill,Southwest Schuylkill,University City,Powelton,West Powelton,East Parkside,Belmont,Haverford North,West Parkside,Mill Creek,Dunlap,Mantua,Haddington,Carroll Park,Overbrook,Wynnefield Heights,Callowhill,West Poplar,East Poplar,Strawberry Mansion,East Park,Wynnefield,West Park,Normandy Village,Stadium District,Navy Yard,East Kensington,Elmwood,Girard Estates,Eastwick,Packer Park,Pennsport,Newbold,West Passyunk,East Passyunk"];
+var neighborhoods = ["Bustleton", "Bridesburg", "Cedarbrook", "Chestnut Hill", "East Falls", "East Mount Airy", "Grays Ferry", "Olney", "Pennypack Park", "Somerton", "West Mount Airy", "West Oak Lane", "Wissahickon Park", "Riverfront", "Byberry", "West Torresdale", "Mechanicsville", "Parkwood Manor", "Franklin Mills", "Northeast Philadelphia", "Airport", "Modena", "Morrell Park", "Millbrook", "Crestmont Farms", "Academy Gardens", "Pennypack", "Aston", "Woodbridge", "Pennypack Woods", "Winchester Park", "Torresdale", "Lexington Park", "Rhawnhurst", "Fox Chase", "Burholme", "Oxford Circle", "Summerdale", "Crescentville", "Lawndale", "Northwood", "Holmesburg", "Frankford", "Mayfair", "Tacony", "Wissinoming", "Andorra", "Upper Roxborough", "Dearnley Park", "Roxborough Park", "Germany Hill", "Wissahickon Hills", "Roxborough", "Manayunk", "Wissahickon", "East", "Germantown", "Germantown - Morton", "West Central Germantown", "Germantown - Penn Knox", "Germantown - Westside", "Southwest Germantown", "Ogontz", "Wister,Nicetown", "Tioga", "Allegheny West", "Glenwood", "Fern Rock", "East Oak Lane", "Melrose Park Gardens", "Franklinville", "Feltonville", "Richmond", "Port Richmond", "Hunting Park", "Juniata Park", "Harrowgate", "Fairhill", "Upper Kensington", "McGuire", "Stanton", "Brewerytown", "Sharswood", "North Central", "Yorktown", "Ludlow", "Hartranft", "West Kensington", "Fishtown - Lower Kensington", "Old Kensington", "Northern Liberties", "Logan", "Society Hill", "Old City", "Chinatown", "Center City East", "Washington Square West", "Fairmount", "Francisville", "Spring Garden", "Logan Square", "Rittenhouse", "Fitler Square", "Graduate Hospital", "Point Breeze", "Hawthorne", "Bella Vista", "Queen Village", "Dickinson Narrows", "Passyunk Square", "Greenwich", "Lower Moyamensing", "Whitman", "Industrial", "Airport", "Clearview", "Penrose", "Paschall", "Bartram Village", "Kingsessing,Cobbs Creek", "Walnut Hill", "Cedar Park", "Garden Court", "Woodland Terrace", "Spruce Hill", "Southwest Schuylkill", "University City", "Powelton", "West Powelton", "East Parkside", "Belmont", "Haverford North", "West Parkside", "Mill Creek", "Dunlap", "Mantua", "Haddington", "Carroll Park", "Overbrook", "Wynnefield Heights", "Callowhill", "West Poplar", "East Poplar", "Strawberry Mansion", "East Park", "Wynnefield", "West Park", "Normandy Village", "Stadium District", "Navy Yard", "East Kensington", "Elmwood", "Girard Estates", "Eastwick", "Packer Park", "Pennsport", "Newbold", "West Passyunk", "East Passyunk"];
+var neighborhoods_nospaces = neighborhoods.map(function(item) {
+    return item.replace(/\s+/g, '');
+    //return item.split('-').join('');
+    //return item.replace(/-+/g, '');
+})
+var neighborhoods_nodashes = neighborhoods_nospaces.map(function(item) {
+    //return item.replace(/\s+/g,'');
+    return item.split('-').join('');
+    //return item.replace(/-+/g, '');
+})
 
-// document.getElementById("leftbox")
+neighborhoods = neighborhoods_nodashes;
+var newround = [];
+var input = "";
+var isEmpty = "";
+var leftbox = "";
+var leftboxinnerhtml = "";
+var leftboxregular = "";
+var leftboxchildren = "";
 
-//function somefunction(){alert("hello")};
-
-/*
-Modal
-*/
-
-// // Get the modal
-// var modal = document.getElementById('myModal');
-
-// // Get the button that opens the modal
-// var btn = document.getElementById("myBtn");
-
-// // Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
-
-// // When the user clicks the button, open the modal 
-// btn.onclick = function() {
-//     modal.style.display = "block";
-// }
-
-// // When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//     modal.style.display = "none";
-// }
-
-// // When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//     if (event.target == modal) {
-//         modal.style.display = "none";
-//     }
-// }
-
-/*
-Letter Input Field
-*/
 
 function start() {
+    countClicks = 0;
     var inputboxes = document.getElementsByClassName('inputboxes');
     leftboxregular = document.getElementById('leftbox');
     var leftboxchildren = document.getElementById('leftbox').childNodes;
     var leftboxinnerhtml = document.getElementById('leftbox').innerHTML;
     var isEmpty = leftboxinnerhtml.includes('class="inputboxes"');
     console.log(isEmpty, "isempty");
+    ////// Input Box Focus /////
+    $(document).ready(function() {
+        $('input').on("input", function() {
+            if ($(this).val().length == $(this).attr("maxlength")) {
+                $(this).next().focus();
+            }
+        });
+    });
+
     if (!isEmpty) {
         alert("a new game will go here!");
 
         newround = neighborhoods[Math.floor(Math.random() * neighborhoods.length)].split("");
         console.log(newround);
-        s = " ";
-        dash = "-";
-        position_s = newround.indexOf(s);
-        position_d = newround.indexOf(dash);
-        if (~position_s) newround.splice(position_s, 1);
-        if (~position_d) newround.splice(position_d, 1);
+
+
         console.log(newround);
         newgame.multiply_element(newround)
+
     } else if (isEmpty) {
         alert("It's not empty but here's the new game!")
         console.log(leftboxchildren);
 
-        // console.log(inputboxes.length)
-        // for (let k = 0; k < inputboxes.length; k++) {
-        //     leftboxregular.removeChild(inputboxes[k]);//leftboxchildren.input.nodeName["INPUT"]);//nodeType[1]
 
-        // }
-        // console.log(inputboxes.length)
         leftboxregular.innerHTML = ""
         console.log(leftboxchildren);
 
 
         newround = neighborhoods[Math.floor(Math.random() * neighborhoods.length)].split("");
+
         s = " ";
         dash = "-";
-        position_s = newround.indexOf(s);
-        position_d = newround.indexOf(dash);
-        if (~position_s) newround.splice(position_s, 1);
-        if (~position_d) newround.splice(position_d, 1);
+
         console.log(newround);
         newgame.multiply_element(newround)
+
     };
+
 }
 
 // create object for new game.
 var newgame = {
-    //neighborhoods: ["Bustleton", "Bridesburg", "Cedarbrook", "Chestnut Hill", "East Falls", "East Mount Airy", "Grays Ferry", "Olney", "Pennypack Park", "Somerton", "West Mount Airy", "West Oak Lane", "Wissahickon Park", "Riverfront", "Byberry", "West Torresdale", "Mechanicsville", "Parkwood Manor", "Franklin Mills", "Northeast Philadelphia", "Airport", "Modena", "Morrell Park", "Millbrook", "Crestmont Farms", "Academy Gardens", "Pennypack", "Aston", "Woodbridge", "Pennypack Woods", "Winchester Park", "Torresdale", "Lexington Park", "Rhawnhurst", "Fox Chase", "Burholme", "Oxford Circle", "Summerdale", "Crescentville", "Lawndale", "Northwood", "Holmesburg", "Frankford", "Mayfair", "Tacony", "Wissinoming", "Andorra", "Upper Roxborough", "Dearnley Park", "Roxborough Park", "Germany Hill", "Wissahickon Hills", "Roxborough", "Manayunk", "Wissahickon", "East", "Germantown", "Germantown - Morton", "West Central Germantown", "Germantown - Penn Knox", "Germantown - Westside", "Southwest Germantown", "Ogontz", "Wister,Nicetown", "Tioga", "Allegheny West", "Glenwood", "Fern Rock", "East Oak Lane", "Melrose Park Gardens", "Franklinville", "Feltonville", "Richmond", "Port Richmond", "Hunting Park", "Juniata Park", "Harrowgate", "Fairhill", "Upper Kensington", "McGuire", "Stanton", "Brewerytown", "Sharswood", "North Central", "Yorktown", "Ludlow", "Hartranft", "West Kensington", "Fishtown - Lower Kensington", "Old Kensington", "Northern Liberties", "Logan", "Society Hill", "Old City", "Chinatown", "Center City East", "Washington Square West", "Fairmount", "Francisville", "Spring Garden", "Logan Square", "Rittenhouse", "Fitler Square", "Graduate Hospital", "Point Breeze", "Hawthorne", "Bella Vista", "Queen Village", "Dickinson Narrows", "Passyunk Square", "Greenwich", "Lower Moyamensing", "Whitman", "Industrial", "Airport", "Clearview", "Penrose", "Paschall", "Bartram Village", "Kingsessing,Cobbs Creek", "Walnut Hill", "Cedar Park", "Garden Court", "Woodland Terrace", "Spruce Hill", "Southwest Schuylkill", "University City", "Powelton", "West Powelton", "East Parkside", "Belmont", "Haverford North", "West Parkside", "Mill Creek", "Dunlap", "Mantua", "Haddington", "Carroll Park", "Overbrook", "Wynnefield Heights", "Callowhill", "West Poplar", "East Poplar", "Strawberry Mansion", "East Park", "Wynnefield", "West Park", "Normandy Village", "Stadium District", "Navy Yard", "East Kensington", "Elmwood", "Girard Estates", "Eastwick", "Packer Park", "Pennsport", "Newbold", "West Passyunk", "East Passyunk"],
-    //neighborhood: [],
-    //word: [],
-    // split: function() {
-    //     for (i = 0; i < neighborhoods.length; i++) {
-    //         //console.log(neighborhoods[i]);
-    //         neighborhoods.replace(/\s/g,'');
-    //         neighborhoods.replace(/-/,'');
-    //         var neighborhood = neighborhoods[i].split("");
-    //         neighborhood.replace(/\s/g, '');
-    //         neighborhood.replace(/-/g,'');
-    //         return neighborhood;
-    //     };
-
-    // },
 
     multiply_element: function(a) {
         var leftbox = document.getElementById("leftbox");
+        console.log(leftbox);
         for (i = 0; i < a.length; i++) {
             //var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
@@ -116,95 +86,165 @@ var newgame = {
             console.log("!!!!", input.id)
             //var parent = document.getElementsByClassName("leftbox")[0];
             leftbox.appendChild(input);
-
         }
-    },
-
-
-    //}
-
+    }
     //check if input is true
     // .includes on word.includes(array[i])
-    check: function(a) {
-        inputbox_array = [document.getElementsByClassName("inputboxes")];
-        for (i = 0; i < inputbox_array.length; i++) {
-            if (input[i].value == word[i]) {
-                document.getElementById['input' + a[i] + a[i].indexOf];
-                input.type = "text"
-                input.readonly = "readonly";
-            }
-        }
-    },
+    // check: function() {
+    //     //input = document.getElementById(input.id);
+    //     inputbox_array = [document.getElementsByClassName("inputboxes")];
+    //     for (i = 0; i < inputbox_array.length; i++) {
+    //         if (input[i].value == newround.forEach()) {
+    //             document.getElementById['input' + a[i] + a[i].indexOf];
+    //             input[i].type = "text"
+    //             input[i].readonly = "readonly";
+    //         }
+    //     }
+    // },
 
 } //game object bracket -_-
+var countClicks = 0;
 
-// New Game Button - needs to go through the neighborhoods 
-// array and select a new random neighborhood
-// then it will generate a new set of input boxes in leftdiv
-var neighborhoods = ["Bustleton", "Bridesburg", "Cedarbrook", "Chestnut Hill", "East Falls", "East Mount Airy", "Grays Ferry", "Olney", "Pennypack Park", "Somerton", "West Mount Airy", "West Oak Lane", "Wissahickon Park", "Riverfront", "Byberry", "West Torresdale", "Mechanicsville", "Parkwood Manor", "Franklin Mills", "Northeast Philadelphia", "Airport", "Modena", "Morrell Park", "Millbrook", "Crestmont Farms", "Academy Gardens", "Pennypack", "Aston", "Woodbridge", "Pennypack Woods", "Winchester Park", "Torresdale", "Lexington Park", "Rhawnhurst", "Fox Chase", "Burholme", "Oxford Circle", "Summerdale", "Crescentville", "Lawndale", "Northwood", "Holmesburg", "Frankford", "Mayfair", "Tacony", "Wissinoming", "Andorra", "Upper Roxborough", "Dearnley Park", "Roxborough Park", "Germany Hill", "Wissahickon Hills", "Roxborough", "Manayunk", "Wissahickon", "East", "Germantown", "Germantown - Morton", "West Central Germantown", "Germantown - Penn Knox", "Germantown - Westside", "Southwest Germantown", "Ogontz", "Wister,Nicetown", "Tioga", "Allegheny West", "Glenwood", "Fern Rock", "East Oak Lane", "Melrose Park Gardens", "Franklinville", "Feltonville", "Richmond", "Port Richmond", "Hunting Park", "Juniata Park", "Harrowgate", "Fairhill", "Upper Kensington", "McGuire", "Stanton", "Brewerytown", "Sharswood", "North Central", "Yorktown", "Ludlow", "Hartranft", "West Kensington", "Fishtown - Lower Kensington", "Old Kensington", "Northern Liberties", "Logan", "Society Hill", "Old City", "Chinatown", "Center City East", "Washington Square West", "Fairmount", "Francisville", "Spring Garden", "Logan Square", "Rittenhouse", "Fitler Square", "Graduate Hospital", "Point Breeze", "Hawthorne", "Bella Vista", "Queen Village", "Dickinson Narrows", "Passyunk Square", "Greenwich", "Lower Moyamensing", "Whitman", "Industrial", "Airport", "Clearview", "Penrose", "Paschall", "Bartram Village", "Kingsessing,Cobbs Creek", "Walnut Hill", "Cedar Park", "Garden Court", "Woodland Terrace", "Spruce Hill", "Southwest Schuylkill", "University City", "Powelton", "West Powelton", "East Parkside", "Belmont", "Haverford North", "West Parkside", "Mill Creek", "Dunlap", "Mantua", "Haddington", "Carroll Park", "Overbrook", "Wynnefield Heights", "Callowhill", "West Poplar", "East Poplar", "Strawberry Mansion", "East Park", "Wynnefield", "West Park", "Normandy Village", "Stadium District", "Navy Yard", "East Kensington", "Elmwood", "Girard Estates", "Eastwick", "Packer Park", "Pennsport", "Newbold", "West Passyunk", "East Passyunk"];
-
-
+function countclicks() {
+    countClicks++;
+}
 
 
+function shuffle(a) {
+    var currentIndex = a.length,
+        temporaryValue, randomIndex;
+
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = a[currentIndex];
+        a[currentIndex] = a[randomIndex];
+        a[randomIndex] = temporaryValue;
+    }
+
+    return a;
+}
+/*
+Letter Input Field
+*/
+function hint() {
+    countclicks();
+    console.log("CC", countClicks);
+    newgamestarted = document.getElementById('startnewgame');
+    // if (newgamestarted.onclick == true) {
+    //     countClicks = 0;
+    // }
+    var first_guess = "";
+    var second_guess = "";
+    var third_guess = "";
+    var fourth_guess = "";
+    if (countClicks == 1) {
+        // inputboxes = document.getElementsByClassName('inputboxes');
+        var first_guess = newround[Math.floor(Math.random() * newround.length)];
+        console.log("first_guess:", first_guess);
+        console.log(newround);
+        var matching_element = newround.find(function finder(element) {
+            return element == first_guess;
+        });
+        matching_element;
+        console.log("matching_element:", matching_element);
+
+        var input_id = `input${matching_element}`;
+        console.log("input_id:", input_id);
+        var target_input = document.getElementById(input_id);
+        console.log("target_input:", target_input);
+        target_input.value = matching_element;
+        console.log("target_input.value:", target_input.value);
+    } else if (countClicks == 2) {
+        // run this loop until numberOne is different than numberThree
+        do {
+            second_guess = newround[Math.floor(Math.random() * newround.length)];
+        } while (second_guess === first_guess);
+
+        // // run this loop until numberTwo is different than numberThree and numberOne
+        // 
+        // var random_element = newround[Math.floor(Math.random() * newround.length)];
+        console.log("second_guess:", second_guess);
+        console.log(newround);
+        var matching_element = newround.find(function finder(element) {
+            return element == second_guess;
+        });
+        matching_element;
+        console.log("matching_element:", matching_element);
+
+        var input_id = `input${matching_element}`;
+        console.log("input_id:", input_id);
+        var target_input = document.getElementById(input_id);
+        console.log("target_input:", target_input);
+        target_input.value = matching_element;
+        console.log("target_input.value:", target_input.value);
+    } else if (countClicks == 3) {
+        do {
+            third_guess = newround[Math.floor(Math.random() * newround.length)];
+        } while (third_guess === second_guess || third_guess === first_guess);
+        console.log("third_guess:", third_guess);
+        console.log(newround);
+        var matching_element = newround.find(function finder(element) {
+            return element == third_guess;
+        });
+        matching_element;
+        console.log("matching_element:", matching_element);
+
+        var input_id = `input${matching_element}`;
+        console.log("input_id:", input_id);
+        var target_input = document.getElementById(input_id);
+        console.log("target_input:", target_input);
+        target_input.value = matching_element;
+        console.log("target_input.value:", target_input.value);
+    } else if (countClicks == 4) {
+        do {
+            fourth_guess = newround[Math.floor(Math.random() * newround.length)];
+        } while (fourth_guess === third_guess || fourth_guess === second_guess || fourth_guess === first_guess);
+        // var fourth_guess = newround[Math.floor(Math.random() * newround.length)];
+        console.log("fourth_guess:", fourth_guess);
+        console.log(newround);
+        var matching_element = newround.find(function finder(element) {
+            return element == fourth_guess;
+        });
+        matching_element;
+        console.log("matching_element:", matching_element);
+
+        var input_id = `input${matching_element}`;
+        console.log("input_id:", input_id);
+        var target_input = document.getElementById(input_id);
+        console.log("target_input:", target_input);
+        target_input.value = matching_element;
+        console.log("target_input.value:", target_input.value);
+    } else if (countClicks >= 5) {
+        alert(`Pathetic! ${shuffle(newround).toString().replace(/,+/g, '')}`);
+        countclicks();
+        console.log(countClicks);
+        console.log(shuffle(newround));
+        console.log(newround);
+    }
+}
+//////// Input Validation ///
+inputboxes=document.getElementsByClassName('inputboxes');
+for (p = 0; p < inputboxes.length; p++) {
+    console.log("inputboxes[p]",inputboxes[p]);
+    //inputboxes[p].addEventListener("input", validate(p););
+}
+function validate(p) {
+    inputboxes[p].readOnly == true;
+    var validate_array = [];
+    validate_array.push(inputboxes[p]);
+    console.log(validate_array);
+    if (validate_array == newround.toString().replace(/,+/g, '')) {
+        alert("Winner")
+    }
+}
 
 
 
 
 
-
-// var getleftdiv = document.getElementsByClassName("leftbox");
-// //var getdiv = document.getElementsByClassName("letters");
-// //var getinput =document.getElementsByClassName("inputboxes");
-// var creatediv = document.createElement('div');
-// creatediv.className = "letters" // give div same class name for order
-// var createinput = document.createElement('input');
-// createinput.className = "inputboxes" // give inputs same class name
-// createinput.type = "text";
-// //var divinput = creatediv.appendChild(createinput);
-// getleftdiv.appendChild(createinput);
-// //createelement;
-// createelement.style.display = "inline-block"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var addinput = 0;
-// function letterinput(a){
-//  var addbox = document.getElementById("originput");
-//  var docstyle = addbox.style.display;
-//  if (docstyle=='none') addbox.style.display = '';
-//  addbox++;
-
-//  var text = document.createElement('div');
-//  text.id = 'addbox_' + addbox_;
-//  text.innerHTML = "<input type='text' value='' class='buckinput' name='items[]' style='padding:5px;'/> a href='javascript:void(0);' onclick='addInput("+ addbox + "'>add more</a";
-
-//  addList.appendChild(text);
-//  }
-//  letterinput(1);
-
-//  var inpts = document.getElementsByClassName("inputboxes");
-//  var leftbox = document.getElementsByClassName("leftbox");
-//  for (i=0; i <= word.length; i++){
-//      console.log(word);
-//      var newinput = document.createElement("input");
-//      var boxes = newinput.appendChild(inpts);
-//      boxes.appendChild(leftbox);
-// }
-// }
