@@ -21,6 +21,7 @@ var leftboxchildren = "";
 
 
 function start() {
+    console.log('this is the start function')
     countClicks = 0;
     var inputboxes = document.getElementsByClassName('inputboxes');
     leftboxregular = document.getElementById('leftbox');
@@ -62,9 +63,37 @@ function start() {
         dash = "-";
 
         console.log(newround);
-        newgame.multiply_element(newround)
+        newgame.multiply_element(newround);
+
+
+
 
     };
+    // add event listener for all input boxes after they've been created
+    var inputboxes = document.getElementsByClassName('inputboxes');
+    console.log("line 71:", inputboxes);
+
+    //stackoverflow
+    for (var i = 0; i < inputboxes.length; i++) {
+        let a= newround;
+        inputboxes[i].addEventListener("input", validate(i,a));
+    }
+
+    // function bindClick(i) {
+    //     return function() {
+    //         console.log("you clicked region number " + i);
+    //     };
+    // }
+
+
+    // for (x = 0; x < inputboxes.length; x++) {
+    //     console.log("inputboxes[x] line 75", inputboxes[x]);
+    //     inputboxes[x].addEventListener('keydown', function() {
+    //         console.log("inputboxes[x] line 77", inputboxes[x]);
+    //         validate([inputboxes[x]]);
+    //     })
+
+    // };
 
 }
 
@@ -75,7 +104,6 @@ var newgame = {
         var leftbox = document.getElementById("leftbox");
         console.log(leftbox);
         for (i = 0; i < a.length; i++) {
-            //var alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
             var input = document.createElement("input");
             input.setAttribute('type', 'text');
@@ -227,24 +255,77 @@ function hint() {
         console.log(shuffle(newround));
         console.log(newround);
     }
-}
+};
 //////// Input Validation ///
-inputboxes=document.getElementsByClassName('inputboxes');
-for (p = 0; p < inputboxes.length; p++) {
-    console.log("inputboxes[p]",inputboxes[p]);
-    //inputboxes[p].addEventListener("input", validate(p););
+
+
+
+
+inputboxes = document.getElementsByClassName('inputboxes');
+console.log('inputboxes line 237:', inputboxes);
+
+
+inputboxes = document.getElementsByClassName('inputboxes');
+
+function validate(i,a) {
+    return function(){
+        
+        console.log("newround",a);
+        // for (var z=0; z < a.length; z++){
+            // console.log('z:',z)
+            // console.log('a.length',a.length)
+                // console.log('This is Oggi ' + inputboxes[i].value )
+
+            if (inputboxes[i].value == a[i]){
+                console.log("whatever from Oggi")
+                console.log(inputboxes[i],'=',a[i]);
+                //console.log(inputboxes[i])
+                console.log(inputboxes[i].value,'=',a[i])
+                //console.log(a[z])
+                console.log("match!")
+            }
+            else if (inputboxes[i].value != a[i]){
+                console.log("--------BREAK------")
+                console.log("lame");
+            }
+        // }
+        
+    };
 }
-function validate(p) {
-    inputboxes[p].readOnly == true;
-    var validate_array = [];
-    validate_array.push(inputboxes[p]);
-    console.log(validate_array);
-    if (validate_array == newround.toString().replace(/,+/g, '')) {
-        alert("Winner")
-    }
-}
 
 
 
+//}
+        //     console.log("stckovflw index?:" + i);
+        
+        // console.log("inputboxes[i]:",inputboxes[i]);
+        // //var boxarray=;
+        // //for (a=0; a < inputboxes[i].length; a++){
+        // boxarray.push(inputboxes[i]);
+        // console.log("boxaray:",boxarray);
+        // console.log("boxarray[0].value:",boxarray[0].value);
+        // //}//var boxarray_value = document.getElementById(`${boxarray}.`);
+        // //var getbox = document.getElementById(boxarray.id);
+        // //if (getbox.value == 
+        // //for (z=0; z < ){
 
+        // //if (input)
+        // //console.log("278 boxarray:",boxarray);
+        // //console.log("279 inputid[i]:",input_id);
+        // //console.log("280 getbox:",getbox)
 
+        // var index_of_input_id = document.getElementById
+        //document.getElementById('inputboxes[i]')
+// function validate(a) {
+
+//     var validate_array = [];
+//     //input
+//     //console.log(inputg.value);
+//     // validate_array.push(inputboxes[p]);
+//     // console.log(validate_array);
+//     // if (validate_array == newround.toString().replace(/,+/g, '')) {
+//     //         inputboxes[p].readOnly = true;
+//     //         alert("Winner");
+//     // }
+//     console.log('i work!', a);
+// };

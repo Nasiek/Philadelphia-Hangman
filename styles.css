@@ -7,27 +7,40 @@
 .middlespace {
     font-size: 300%;
     position: absolute;
-    margin-left: 46.5%;
+    margin-left: 40.5%;
     margin-top: 20%;
     margin-bottom: auto;
 }
 
+
 /* The Modal (background) */
+
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
+
 /* Modal Content */
+
 .modal-content {
     background-color: #fefefe;
     margin: auto;
@@ -36,7 +49,9 @@
     width: 80%;
 }
 
+
 /* The Close Button */
+
 .close {
     color: #aaaaaa;
     float: right;
@@ -50,6 +65,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 #header {
     font-family: 'Lato', sans-serif;
     color: antiquewhite;
@@ -68,15 +84,46 @@
     position: relative;
 }
 
+#homeownership {
+width: 473px;
+height: 90%;
+position:absolute;
+margin-left: 8%;
+margin-right: 10px;
+margin-top: 5%;
+margin-bottom: 20%;
+border-radius: 20px ;  
+}
+
+.hidden{
+    display:none;
+}
+
+.container_RB:hover .visible{
+display: none;
+}
+
 #stockmap {
-    width: 90%;
+    width: 460px;
     height: 90%;
     position: absolute;
     margin-left: 10%;
     margin-right: 10%;
     margin-top: 10%;
     margin-bottom: 10%;
-    display: block;
+}
+.container_RB:hover .hidden{
+display:block;
+}
+
+.hidden, .visible{
+    width: 80%;
+    height: 550px;
+    border: 2px solid #626567;
+    float: right;
+    /*margin-right: 12px;*/
+    margin-top: 40px;
+    position: relative;
 }
 
 #qmark {
@@ -89,7 +136,33 @@
     margin-top: 30%;
     margin-bottom: 30%;
     display: block;
+    border-radius: 50px;
 }
+
+/*#qmark {
+    -webkit-animation: spin .10s infinite linear;
+    animation: spin .8s infinite linear;
+}
+
+@-webkit-keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    100% {
+        -moz-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}*/
 
 #leftbox {
     background-color: #E5E8E8;
@@ -123,23 +196,43 @@ input[type=text]:focus {
     background-color: #566573;
     text-shadow: -1px 0 grey, 0 1px black, 1px 0 black, 0 -1px grey;
 }
-#buttonspace{
-/* position later*/
+
+#buttonspace {
+    /* position later*/
+}
+#hint{
+margin-left:100%;
+margin-top:70%;
+background-color: #27AE60;
+border-radius: 12px;
+width:90px;
+height: 50px;
+transition-duration: 0.4s;
+display: block;
+position: relative;
+font-size: 16px;
+color: white;
+font-family: 'Lato sans-serif';
 }
 
+#hint:hover {
+background-color: #273746;
+text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
+box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
 #startnewgame {
-	margin-top: 100%;
-	margin-left: 70%;
-	background-color: #3498DB;
-	border-radius: 12px;
-	width: 90px;
-	height: 50px;
-	transition-duration: 0.4s;
-	display:inline-block;
-	position: absolute;
-	font-size: 16px;
-	color: white;
-	font-family: 'Lato sans-serif';
+    margin-top: 100%;
+    margin-left: 70%;
+    background-color: #3498DB;
+    border-radius: 12px;
+    width: 90px;
+    height: 50px;
+    transition-duration: 0.4s;
+    display: block;
+    position: absolute;
+    font-size: 16px;
+    color: white;
+    font-family: 'Lato sans-serif';
 }
 
 #startnewgame:hover {
