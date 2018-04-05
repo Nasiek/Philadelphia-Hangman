@@ -18,6 +18,7 @@ var leftbox = "";
 var leftboxinnerhtml = "";
 var leftboxregular = "";
 var leftboxchildren = "";
+var counter =0;
 
 
 function start() {
@@ -75,8 +76,8 @@ function start() {
 
     //stackoverflow
     for (var i = 0; i < inputboxes.length; i++) {
-        let a= newround;
-        inputboxes[i].addEventListener("input", validate(i,a));
+        let a = newround;
+        inputboxes[i].addEventListener("input", validate(i, a));
     }
 
     // function bindClick(i) {
@@ -267,55 +268,67 @@ console.log('inputboxes line 237:', inputboxes);
 
 inputboxes = document.getElementsByClassName('inputboxes');
 
-function validate(i,a) {
-    return function(){
-        
-        console.log("newround",a);
-        // for (var z=0; z < a.length; z++){
-            // console.log('z:',z)
-            // console.log('a.length',a.length)
-                // console.log('This is Oggi ' + inputboxes[i].value )
+function validate(i, a) {
+    return function() {
 
-            if (inputboxes[i].value == a[i]){
-                console.log("whatever from Oggi")
-                console.log(inputboxes[i],'=',a[i]);
-                //console.log(inputboxes[i])
-                console.log(inputboxes[i].value,'=',a[i])
-                //console.log(a[z])
-                console.log("match!")
+        console.log("newround", a);
+        // for (var z=0; z < a.length; z++){
+        // console.log('z:',z)
+        // console.log('a.length',a.length)
+        // console.log('This is Oggi ' + inputboxes[i].value )
+         
+        if (inputboxes[i].value == a[i]) {
+            console.log(inputboxes[i], '=', a[i]);
+            //console.log(inputboxes[i])
+            inputboxes[i].style.border = "2px solid gold "
+            inputboxes[i].readOnly = true;
+            console.log(inputboxes[i].value, '=', a[i])
+            //console.log(a[z])
+            console.log("match!")
+            counter++;
+            console.log(counter);
+            if (counter == a.length){
+                alert(`Good Job! Check out ${a.toString().replace(/,+/g, '')} sometime!`)
             }
-            else if (inputboxes[i].value != a[i]){
-                console.log("--------BREAK------")
-                console.log("lame");
-            }
-        // }
-        
+            
+        } 
+        else if (inputboxes[i].value != a[i]) {
+            inputboxes[i].style.border = "2px solid red";
+            inputboxes[i].style.animation = "shake 0.10 s"
+            //inputboxes[i].style[`animation - iteration - count`] = "infinite";
+            
+            console.log("--------BREAK------")
+            console.log("lame");
+        }
+            
+
+
     };
 }
 
 
 
 //}
-        //     console.log("stckovflw index?:" + i);
-        
-        // console.log("inputboxes[i]:",inputboxes[i]);
-        // //var boxarray=;
-        // //for (a=0; a < inputboxes[i].length; a++){
-        // boxarray.push(inputboxes[i]);
-        // console.log("boxaray:",boxarray);
-        // console.log("boxarray[0].value:",boxarray[0].value);
-        // //}//var boxarray_value = document.getElementById(`${boxarray}.`);
-        // //var getbox = document.getElementById(boxarray.id);
-        // //if (getbox.value == 
-        // //for (z=0; z < ){
+//     console.log("stckovflw index?:" + i);
 
-        // //if (input)
-        // //console.log("278 boxarray:",boxarray);
-        // //console.log("279 inputid[i]:",input_id);
-        // //console.log("280 getbox:",getbox)
+// console.log("inputboxes[i]:",inputboxes[i]);
+// //var boxarray=;
+// //for (a=0; a < inputboxes[i].length; a++){
+// boxarray.push(inputboxes[i]);
+// console.log("boxaray:",boxarray);
+// console.log("boxarray[0].value:",boxarray[0].value);
+// //}//var boxarray_value = document.getElementById(`${boxarray}.`);
+// //var getbox = document.getElementById(boxarray.id);
+// //if (getbox.value == 
+// //for (z=0; z < ){
 
-        // var index_of_input_id = document.getElementById
-        //document.getElementById('inputboxes[i]')
+// //if (input)
+// //console.log("278 boxarray:",boxarray);
+// //console.log("279 inputid[i]:",input_id);
+// //console.log("280 getbox:",getbox)
+
+// var index_of_input_id = document.getElementById
+//document.getElementById('inputboxes[i]')
 // function validate(a) {
 
 //     var validate_array = [];
