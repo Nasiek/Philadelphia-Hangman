@@ -4,8 +4,11 @@
     height: 1200px;
 }*/
 body{
-    background-image: url("waterphilly.png");
-    background-position:  bottom 50% right 50%;
+    /*background-image: url("waterphilly.png");*/
+/*    background-position:  bottom 50% right 50%;*/
+    background-image: url("drone.png");
+    background-position: 0% 0%;
+    
 }
 
 .middlespace {
