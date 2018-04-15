@@ -72,12 +72,12 @@ function start() {
     };
     // add event listener for all input boxes after they've been created
     var inputboxes = document.getElementsByClassName('inputboxes');
-    console.log("line 71:", inputboxes);
+    console.log("line 74:", inputboxes);
 
     //stackoverflow
     for (var i = 0; i < inputboxes.length; i++) {
         let a = newround;
-        inputboxes[i].addEventListener("input", validate(i, a));
+        inputboxes[i].addEventListener("keypress", validate(i, a));
     }
 
     // function bindClick(i) {
@@ -107,9 +107,10 @@ var newgame = {
         for (i = 0; i < a.length; i++) {
 
             var input = document.createElement("input");
+            
             input.setAttribute('type', 'text');
             input.className = "inputboxes";
-            input.id = 'input' + a[i]; // + a[i].indexOf
+            input.id = 'input' + [i]//.indexOf(i); // + a[i]
             input.value.length = "1";
             input.maxLength = "1";
             console.log("!!!!", input.id)
@@ -183,10 +184,13 @@ function hint() {
         matching_element;
         console.log("matching_element:", matching_element);
 
-        var input_id = `input${matching_element}`;
+        var input_id = `input${newround.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
+        // if (target_input.length> 1) {
+        //     target_input.value  
+        // }
         target_input.value = matching_element;
         console.log("target_input.value:", target_input.value);
     } else if (countClicks == 2) {
@@ -206,7 +210,7 @@ function hint() {
         matching_element;
         console.log("matching_element:", matching_element);
 
-        var input_id = `input${matching_element}`;
+        var input_id = `input${newround.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
@@ -224,7 +228,7 @@ function hint() {
         matching_element;
         console.log("matching_element:", matching_element);
 
-        var input_id = `input${matching_element}`;
+        var input_id = `input${newround.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
@@ -243,7 +247,7 @@ function hint() {
         matching_element;
         console.log("matching_element:", matching_element);
 
-        var input_id = `input${matching_element}`;
+        var input_id = `input${newround.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
@@ -272,6 +276,8 @@ function validate(i, a) {
     return function() {
 
         console.log("newround", a);
+        console.log(countClicks,`countClicks`);
+        console.log(counter,`counter`);
         // for (var z=0; z < a.length; z++){
         // console.log('z:',z)
         // console.log('a.length',a.length)

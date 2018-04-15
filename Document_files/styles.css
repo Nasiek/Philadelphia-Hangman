@@ -1,7 +1,11 @@
 .maincontent {
-    background-color: #bbbbbb;
     width: 100%;
     height: 1200px;
+}
+body {
+
+    background-image: url('skyline.jpg');
+
 }
 
 .middlespace {
