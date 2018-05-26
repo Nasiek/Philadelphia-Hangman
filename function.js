@@ -19,6 +19,7 @@ var leftboxinnerhtml = "";
 var leftboxregular = "";
 var leftboxchildren = "";
 var counter =0;
+var rightcounter = 0;
 
 
 function start() {
@@ -38,46 +39,38 @@ function start() {
             }
         });
     });
-
+    //gets index of random word and splits it into letters
     if (!isEmpty) {
         alert("a new game will go here!");
 
         newround = neighborhoods[Math.floor(Math.random() * neighborhoods.length)].split("");
-        console.log(newround);
-
-
         console.log(newround);
         newgame.multiply_element(newround)
 
     } else if (isEmpty) {
         alert("It's not empty but here's the new game!")
         console.log(leftboxchildren);
-
+        // wipes out whatever is in the div to make room for new tiles
 
         leftboxregular.innerHTML = ""
         console.log(leftboxchildren);
-
-
         newround = neighborhoods[Math.floor(Math.random() * neighborhoods.length)].split("");
-
+        ///not sure what s and dash are for yet.variables to target most likely and not produce divs with spaces or strings.
         s = " ";
         dash = "-";
-
         console.log(newround);
         newgame.multiply_element(newround);
-
-
-
-
     };
     // add event listener for all input boxes after they've been created
     var inputboxes = document.getElementsByClassName('inputboxes');
     console.log("line 74:", inputboxes);
 
     //stackoverflow
-    for (var i = 0; i < inputboxes.length; i++) {
-        let a = newround;
-        inputboxes[i].addEventListener("keypress", validate(i, a));
+    for (let i = 0; i < inputboxes.length; i++) {
+        let a = newround; //here you're passing the index of each letter as '[i]' but you're also passing the value of the letter as 'a' because a= theword.split
+        inputboxes[i].addEventListener("keydown", function() {
+            validate(i, a)//you're running a validate function on it
+        });
     }
 
     // function bindClick(i) {
@@ -96,16 +89,17 @@ function start() {
 
     // };
 
-}
+} //this should end the start function.
 
 // create object for new game.
 var newgame = {
 
     multiply_element: function(a) {
+        var countClicks = 0;//put here to reset counter each game
         var leftbox = document.getElementById("leftbox");
         console.log(leftbox);
         for (i = 0; i < a.length; i++) {
-
+            // make an input box for the duration of each letter 
             var input = document.createElement("input");
             
             input.setAttribute('type', 'text');
@@ -115,6 +109,7 @@ var newgame = {
             input.maxLength = "1";
             console.log("!!!!", input.id)
             //var parent = document.getElementsByClassName("leftbox")[0];
+            //put it in the div.
             leftbox.appendChild(input);
         }
     }
@@ -133,15 +128,16 @@ var newgame = {
     // },
 
 } //game object bracket -_-
-var countClicks = 0;
+
 
 function countclicks() {
     countClicks++;
 }
 
-
+//shuffle function returns the word shuffled as a final hint.
 function shuffle(a) {
-    var currentIndex = a.length,
+    x = a;
+    var currentIndex = x.length,
         temporaryValue, randomIndex;
 
     // While there remain elements to shuffle...
@@ -152,18 +148,18 @@ function shuffle(a) {
         currentIndex -= 1;
 
         // And swap it with the current element.
-        temporaryValue = a[currentIndex];
-        a[currentIndex] = a[randomIndex];
-        a[randomIndex] = temporaryValue;
+        temporaryValue = x[currentIndex];
+        x[currentIndex] = x[randomIndex];
+        x[randomIndex] = temporaryValue;
     }
 
-    return a;
+    return x; //rename variable to x to avoid naming confusion
 }
 /*
 Letter Input Field
 */
 function hint() {
-    countclicks();
+    countclicks(); // everytime the button is pressed count
     console.log("CC", countClicks);
     newgamestarted = document.getElementById('startnewgame');
     // if (newgamestarted.onclick == true) {
@@ -181,9 +177,10 @@ function hint() {
         var matching_element = newround.find(function finder(element) {
             return element == first_guess;
         });
+        
         matching_element;
         console.log("matching_element:", matching_element);
-
+        input_id_num= newround.indexOf(matching_element);
         var input_id = `input${newround.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
         var target_input = document.getElementById(input_id);
@@ -193,6 +190,8 @@ function hint() {
         // }
         target_input.value = matching_element;
         console.log("target_input.value:", target_input.value);
+        validate(input_id_num, newround);
+
     } else if (countClicks == 2) {
         // run this loop until numberOne is different than numberThree
         do {
@@ -212,10 +211,12 @@ function hint() {
 
         var input_id = `input${newround.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
+        input_id_num= newround.indexOf(matching_element);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
         target_input.value = matching_element;
         console.log("target_input.value:", target_input.value);
+        validate(input_id_num, newround);
     } else if (countClicks == 3) {
         do {
             third_guess = newround[Math.floor(Math.random() * newround.length)];
@@ -227,13 +228,14 @@ function hint() {
         });
         matching_element;
         console.log("matching_element:", matching_element);
-
+        input_id_num= newround.indexOf(matching_element);
         var input_id = `input${newround.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
         target_input.value = matching_element;
         console.log("target_input.value:", target_input.value);
+        validate(input_id_num, newround);
     } else if (countClicks == 4) {
         do {
             fourth_guess = newround[Math.floor(Math.random() * newround.length)];
@@ -247,12 +249,14 @@ function hint() {
         matching_element;
         console.log("matching_element:", matching_element);
 
+        input_id_num= newround.indexOf(matching_element);
         var input_id = `input${newround.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
         target_input.value = matching_element;
         console.log("target_input.value:", target_input.value);
+        validate(input_id_num, newround);
     } else if (countClicks >= 5) {
         alert(`Pathetic! ${shuffle(newround).toString().replace(/,+/g, '')}`);
         countclicks();
@@ -260,7 +264,7 @@ function hint() {
         console.log(shuffle(newround));
         console.log(newround);
     }
-};
+}; // hint stuff come back to this.
 //////// Input Validation ///
 
 
@@ -273,44 +277,49 @@ console.log('inputboxes line 237:', inputboxes);
 inputboxes = document.getElementsByClassName('inputboxes');
 
 function validate(i, a) {
-    return function() {
+    
 
-        console.log("newround", a);
-        console.log(countClicks,`countClicks`);
-        console.log(counter,`counter`);
+        console.log("newround in validate func", a);
+        console.log(countClicks,`countClicks in Validate`);
+        console.log(rightcounter,`rightcounter in validate`);
         // for (var z=0; z < a.length; z++){
         // console.log('z:',z)
         // console.log('a.length',a.length)
         // console.log('This is Oggi ' + inputboxes[i].value )
-         
-        if (inputboxes[i].value == a[i]) {
-            console.log(inputboxes[i], '=', a[i]);
-            //console.log(inputboxes[i])
-            inputboxes[i].style.border = "2px solid gold "
-            inputboxes[i].readOnly = true;
-            console.log(inputboxes[i].value, '=', a[i])
-            //console.log(a[z])
-            console.log("match!")
-            counter++;
-            console.log(counter);
-            if (counter == a.length){
-                alert(`Good Job! Check out ${a.toString().replace(/,+/g, '')} sometime!`)
+        var timer = setTimeout(function() {
+
+            if (inputboxes[i].value == a[i]) {
+                console.log(inputboxes[i], '=', a[i]);
+                //console.log(inputboxes[i])
+                inputboxes[i].style.border = "2px solid gold "
+                inputboxes[i].readOnly = true;
+                console.log(inputboxes[i].value, '=', a[i])
+                //console.log(a[z])
+                console.log("match!")
+                rightcounter++;
+                console.log("rightcounter:",rightcounter);
+                console.log("a.length:",a.length);
+                if (rightcounter == a.length){
+                    
+                    alert(`Good Job! Check out ${a.toString().replace(/,+/g, '')} sometime!`)
+                }
+                
+            } 
+            else if (inputboxes[i].value != a[i]) {
+                inputboxes[i].style.border = "2px solid red";
+                inputboxes[i].style.animation = "shake 0.10 s"
+                //inputboxes[i].style[`animation - iteration - count`] = "infinite";
+                
+                console.log("--------BREAK------")
+                console.log("lame");
             }
-            
-        } 
-        else if (inputboxes[i].value != a[i]) {
-            inputboxes[i].style.border = "2px solid red";
-            inputboxes[i].style.animation = "shake 0.10 s"
-            //inputboxes[i].style[`animation - iteration - count`] = "infinite";
-            
-            console.log("--------BREAK------")
-            console.log("lame");
-        }
+        }, 100)
+        timer;
             
 
 
-    };
-}
+    
+};
 
 
 
