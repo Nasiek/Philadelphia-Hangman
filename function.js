@@ -20,6 +20,9 @@ var leftboxregular = "";
 var leftboxchildren = "";
 var counter =0;
 var rightcounter = 0;
+var x = [];
+var xx = [];
+var shufflenewround = [];
 
 
 function start() {
@@ -67,7 +70,8 @@ function start() {
 
     //stackoverflow
     for (let i = 0; i < inputboxes.length; i++) {
-        let a = newround; //here you're passing the index of each letter as '[i]' but you're also passing the value of the letter as 'a' because a= theword.split
+        var a = newround; //here you're passing the index of each letter as '[i]' but you're also passing the value of the letter as 'a' because a= theword.split
+
         inputboxes[i].addEventListener("keydown", function() {
             validate(i, a)//you're running a validate function on it
         });
@@ -134,27 +138,7 @@ function countclicks() {
     countClicks++;
 }
 
-//shuffle function returns the word shuffled as a final hint.
-function shuffle(a) {
-    x = a;
-    var currentIndex = x.length,
-        temporaryValue, randomIndex;
 
-    // While there remain elements to shuffle...
-    while (0 !== currentIndex) {
-
-        // Pick a remaining element...
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-
-        // And swap it with the current element.
-        temporaryValue = x[currentIndex];
-        x[currentIndex] = x[randomIndex];
-        x[randomIndex] = temporaryValue;
-    }
-
-    return x; //rename variable to x to avoid naming confusion
-}
 /*
 Letter Input Field
 */
@@ -169,100 +153,114 @@ function hint() {
     var second_guess = "";
     var third_guess = "";
     var fourth_guess = "";
+    let xx = newround;
     if (countClicks == 1) {
+        
         // inputboxes = document.getElementsByClassName('inputboxes');
-        var first_guess = newround[Math.floor(Math.random() * newround.length)];
+        var first_guess = xx[Math.floor(Math.random() * xx.length)];
         console.log("first_guess:", first_guess);
-        console.log(newround);
-        var matching_element = newround.find(function finder(element) {
+        console.log("x=newround:",xx);
+        var matching_element = xx.find(function finder(element) {
             return element == first_guess;
         });
         
         matching_element;
         console.log("matching_element:", matching_element);
-        input_id_num= newround.indexOf(matching_element);
-        var input_id = `input${newround.indexOf(matching_element)}`;
+        input_id_num= xx.indexOf(matching_element);
+        var input_id = `input${xx.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
         // if (target_input.length> 1) {
         //     target_input.value  
         // }
+        console.log("target_input.id:",target_input.id);
+
         target_input.value = matching_element;
         console.log("target_input.value:", target_input.value);
-        validate(input_id_num, newround);
+        validate(input_id_num, xx);
 
     } else if (countClicks == 2) {
         // run this loop until numberOne is different than numberThree
         do {
-            second_guess = newround[Math.floor(Math.random() * newround.length)];
+            second_guess = xx[Math.floor(Math.random() * xx.length)];
         } while (second_guess === first_guess);
 
         // // run this loop until numberTwo is different than numberThree and numberOne
         // 
         // var random_element = newround[Math.floor(Math.random() * newround.length)];
         console.log("second_guess:", second_guess);
-        console.log(newround);
-        var matching_element = newround.find(function finder(element) {
+        console.log(xx);
+        var matching_element = xx.find(function finder(element) {
             return element == second_guess;
         });
         matching_element;
         console.log("matching_element:", matching_element);
 
-        var input_id = `input${newround.indexOf(matching_element)}`;
+        var input_id = `input${xx.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
-        input_id_num= newround.indexOf(matching_element);
+        input_id_num= xx.indexOf(matching_element);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
+        console.log("target_input.id:",target_input.id);
+
+
         target_input.value = matching_element;
         console.log("target_input.value:", target_input.value);
-        validate(input_id_num, newround);
+        validate(input_id_num, xx);
     } else if (countClicks == 3) {
         do {
-            third_guess = newround[Math.floor(Math.random() * newround.length)];
+            third_guess = xx[Math.floor(Math.random() * xx.length)];
         } while (third_guess === second_guess || third_guess === first_guess);
         console.log("third_guess:", third_guess);
-        console.log(newround);
-        var matching_element = newround.find(function finder(element) {
+        console.log(xx);
+        var matching_element = xx.find(function finder(element) {
             return element == third_guess;
         });
         matching_element;
         console.log("matching_element:", matching_element);
-        input_id_num= newround.indexOf(matching_element);
-        var input_id = `input${newround.indexOf(matching_element)}`;
+        input_id_num= xx.indexOf(matching_element);
+        var input_id = `input${xx.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
+        console.log("target_input.id:",target_input.id);
+
+
         target_input.value = matching_element;
         console.log("target_input.value:", target_input.value);
-        validate(input_id_num, newround);
+        validate(input_id_num, xx);
     } else if (countClicks == 4) {
         do {
-            fourth_guess = newround[Math.floor(Math.random() * newround.length)];
+            fourth_guess = xx[Math.floor(Math.random() * xx.length)];
         } while (fourth_guess === third_guess || fourth_guess === second_guess || fourth_guess === first_guess);
         // var fourth_guess = newround[Math.floor(Math.random() * newround.length)];
         console.log("fourth_guess:", fourth_guess);
-        console.log(newround);
+        console.log(xx);
         var matching_element = newround.find(function finder(element) {
             return element == fourth_guess;
         });
         matching_element;
         console.log("matching_element:", matching_element);
 
-        input_id_num= newround.indexOf(matching_element);
-        var input_id = `input${newround.indexOf(matching_element)}`;
+        input_id_num= xx.indexOf(matching_element);
+        var input_id = `input${xx.indexOf(matching_element)}`;
         console.log("input_id:", input_id);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
+        console.log("target_input.id:",target_input.id);
+
         target_input.value = matching_element;
         console.log("target_input.value:", target_input.value);
-        validate(input_id_num, newround);
+        validate(input_id_num, xx);
     } else if (countClicks >= 5) {
-        alert(`Pathetic! ${shuffle(newround).toString().replace(/,+/g, '')}`);
+        shufflenewround = xx;
+        alert(`Pathetic! ${shufflenewround.toString().replace(/,+/g, '')}`);
+        start();
         countclicks();
         console.log(countClicks);
-        console.log(shuffle(newround));
-        console.log(newround);
+        //console.log(shuffle(shufflenewround));
+        console.log(shufflenewround);// newround should be the word and xx should be the shuffled word
     }
 }; // hint stuff come back to this.
 //////// Input Validation ///
@@ -300,7 +298,6 @@ function validate(i, a) {
                 console.log("rightcounter:",rightcounter);
                 console.log("a.length:",a.length);
                 if (rightcounter == a.length){
-                    
                     alert(`Good Job! Check out ${a.toString().replace(/,+/g, '')} sometime!`)
                 }
                 
@@ -321,7 +318,27 @@ function validate(i, a) {
     
 };
 
+//shuffle function returns the word shuffled as a final hint.
+function shuffle(z) {
+    //x = a;
+    var currentIndex = z.length,
+        temporaryValue, randomIndex;
 
+    // While there remain elements to shuffle...
+    while (0 !== currentIndex) {
+
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+
+        // And swap it with the current element.
+        temporaryValue = z[currentIndex];
+        z[currentIndex] = z[randomIndex];
+        z[randomIndex] = temporaryValue;
+    }
+
+    return z; //rename variable to z to avoid naming confusion
+}
 
 //}
 //     console.log("stckovflw index?:" + i);
