@@ -174,7 +174,7 @@ function hint() {
         // if (target_input.length> 1) {
         //     target_input.value  
         // }
-        console.log("target_input.id:",target_input.id);
+       
 
         target_input.value = matching_element;
         console.log("target_input.value:", target_input.value);
@@ -202,7 +202,6 @@ function hint() {
         input_id_num= xx.indexOf(matching_element);
         var target_input = document.getElementById(input_id);
         console.log("target_input:", target_input);
-        console.log("target_input.id:",target_input.id);
 
 
         target_input.value = matching_element;
